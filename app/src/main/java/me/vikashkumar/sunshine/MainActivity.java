@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +57,8 @@ public class MainActivity extends Activity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        private ArrayAdapter<String> mForecastAdapter;
+
         public PlaceholderFragment() {
         }
 
@@ -75,6 +80,19 @@ public class MainActivity extends Activity {
                     Arrays.asList(forecastArray)
             );
 
+            mForecastAdapter =
+                       new ArrayAdapter<String>(
+                            // the current context
+                            getActivity(),
+                            //id of list item layout
+                            R.layout.list_item_forecast,
+                            // id of text view to populate
+                            R.id.list_item_forecast_textview,
+                            // array data
+                            weekForecast);
+
+                ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
+                listView.setAdapter(mForecastAdapter);
 
             return rootView;
         }

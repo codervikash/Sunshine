@@ -2,10 +2,7 @@
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Today sunny 88/63"
-        android:background="#81171522"
-        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_height="match_parent"
         android:id="@+id/list_item_forecast_textview"
         android:layout_gravity="center_horizontal"
         android:minHeight="?android:attr/listPreferredItemHeight"

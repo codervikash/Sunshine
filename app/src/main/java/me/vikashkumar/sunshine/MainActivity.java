@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -58,6 +61,21 @@ public class MainActivity extends Activity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            String[] forecastArray = {
+                  "Today - Sunny - 88/64",
+                  "Tomorrow - Foggy - 78/64",
+                  "Wed - Cloudy - 72/64",
+                  "Thurs - Asteroids - 75/55",
+                  "Fri - Heavy Rain - 67/44",
+                  "Sat - Sunny - 88/76",
+                  "Today - Light Rain - 81/69",
+            };
+            List<String> weekForecast = new ArrayList<String>(
+                    Arrays.asList(forecastArray)
+            );
+
+
             return rootView;
         }
     }

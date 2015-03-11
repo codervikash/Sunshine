@@ -61,6 +61,9 @@ public class DetailActivity extends Activity {
         private final String LOG_TAG = DetailFragment.class.getSimpleName();
 
         private static final String FORECAST_SHARE_HASHTAG = "#SunshineApp";
+
+        ShareActionProvider mShareActionProvider;
+
         private String mForecastStr;
 
         public DetailFragment() {
@@ -75,8 +78,7 @@ public class DetailActivity extends Activity {
 
             MenuItem menuItem = menu.findItem(R.id.action_share);
 
-            ShareActionProvider mShareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
-
+            mShareActionProvider = (ShareActionProvider) menuItem.getActionProvider();
 
             if (mShareActionProvider != null) {
                 mShareActionProvider.setShareIntent(createShareForecastIntent());
@@ -84,6 +86,7 @@ public class DetailActivity extends Activity {
                 Log.d(LOG_TAG, "shareActionProvider is null");
             }
         }
+
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,7 +104,7 @@ public class DetailActivity extends Activity {
 
         private Intent createShareForecastIntent() {
             Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_TEXT, mForecastStr + FORECAST_SHARE_HASHTAG);
             return intent;
